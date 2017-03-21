@@ -1,0 +1,130 @@
+/**
+ * @provides aphront-dialog-view-css
+ */
+
+.aphront-dialog-view {
+  width: 540px;
+  margin: 32px auto 16px;
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.device-phone .aphront-dialog-view {
+  margin: 16px;
+  width: auto;
+}
+
+.aphront-dialog-view-standalone {
+  margin: auto;
+}
+
+.aphront-dialog-head {
+  padding: 12px 12px 0 12px;
+}
+
+.aphront-dialog-flush .aphront-dialog-body {
+  padding: 0;
+}
+
+.aphront-dialog-view-width-form {
+  width: 600px;
+}
+
+.aphront-dialog-view-width-full {
+  width: 90%;
+}
+
+.aphront-dialog-body {
+  background: #fff;
+  padding: 16px;
+  border: none;
+}
+
+.aphront-dialog-tail {
+  border: none;
+  background: {$lightgreybackground};
+  padding: 8px 16px;
+  border-top: 1px solid {$thinblueborder};
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.aphront-dialog-foot {
+  padding: 6px 0;
+  float: left;
+}
+
+.aphront-dialog-tail button,
+.aphront-dialog-tail a.button {
+  float: right;
+  margin-left: 8px;
+}
+
+.jx-client-dialog {
+  position: absolute;
+  width: 100%;
+}
+
+.jx-mask {
+  opacity: .7;
+  background: #292f33;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.jx-dark-mask {
+  background: #292f33;
+  opacity: 0.95;
+}
+
+.aphront-exception-dialog {
+  width: 95%;
+}
+
+.aphront-exception-dialog .exception-message {
+  font-size: 14px;
+  background: {$sh-yellowbackground};
+  border: 1px solid {$sh-yellowborder};
+  padding: 12px;
+  white-space: pre-wrap;
+}
+
+.aphront-exception-dialog .exception-trace {
+  margin-top: 16px;
+}
+
+.aphront-access-dialog {
+  width: 50%;
+}
+
+.aphront-policy-rejection {
+  font-weight: bold;
+}
+
+.aphront-capability-details {
+  margin: 20px 0 4px;
+}
+
+.aphront-dialog-view-paragraph + .aphront-dialog-view-paragraph {
+  margin-top: 16px;
+}
+
+.device-desktop .aphront-dialog-flush .phui-object-item-list-view {
+  margin: 0;
+  padding: 0;
+}
+
+.aphront-dialog-flush .phui-object-item-list-view.phui-object-list-stackable
+ .phui-object-item {
+  border: 0;
+}
+
+.aphront-dialog-flush .phui-object-item-list-view.phui-object-list-stackable
+ .phui-object-item-frame {
+  border: 0;
+  border-top: 1px solid {$thinblueborder};
+}

@@ -1,0 +1,9 @@
+/**
+ * @provides phame-css
+ */
+
+.fb-comments,
+.fb-comments span,
+.fb-comments iframe[style] {
+  width: 100% !important;
+}

@@ -1,0 +1,599 @@
+/**
+ * @provides phabricator-main-menu-view
+ * @requires phui-theme-css
+ */
+
+
+/* - Main Menu -----------------------------------------------------------------
+
+  Main menu at the top of every page that has chrome. It reacts to resolution
+  changes in order to behave reasonably on tablets and phones.
+
+*/
+
+.phabricator-main-menu {
+  position: relative;
+}
+
+.phabricator-main-menu-background {
+  min-height: 43px;
+  background-color: #ebecee;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.device-desktop .phabricator-main-menu {
+  height: 43px;
+  padding-right: 4px;
+}
+
+.phabricator-main-menu a:hover {
+  text-decoration: none;
+}
+
+
+/* - Logo ----------------------------------------------------------------------
+
+  The "Phabricator" logo group in the main menu. On tablet and phone devices,
+  this shows a "reveal" button to expand/collapse the rest of the menu.
+
+*/
+
+.device-desktop .phabricator-main-menu-group-logo {
+  float: left;
+}
+
+.phabricator-main-menu-brand {
+  display: inline-block;
+  width: 148px;
+  height: 44px;
+  float: left;
+  margin-right: 4px;
+  padding-left: 6px;
+}
+
+.phabricator-main-menu-logo {
+  position: absolute;
+  width: 96px;
+  height: 40px;
+  left: 52px;
+  top: 2px;
+}
+
+.phabricator-main-menu-eye {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 2px;
+}
+
+.device-desktop .phabricator-main-menu-brand:hover {
+  background-color: rgba(55,55,55,.2);
+  cursor: hand;
+}
+
+/* - Expand/Collapse Button ----------------------------------------------------
+
+  On phones, the menu switches to a vertical layout and uses a button to expand
+  or collapse the items.
+
+*/
+
+.phabricator-menu-button-icon {
+  width: 20px;
+  height: 32px;
+  float: left;
+  margin: 10px 8px 0 8px;
+}
+
+.phabricator-menu-button-icon.phui-icon-view {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  color: {$hoverwhite};
+  text-align: center;
+  vertical-align: middle;
+  line-height: 24px;
+}
+
+.phabricator-expand-application-menu,
+.phabricator-expand-search-menu {
+  float: right;
+}
+
+.device-desktop .phabricator-main-menu-search-button,
+.device-desktop .phabricator-main-menu-expand-button {
+  display: none;
+}
+
+
+/* - Search --------------------------------------------------------------------
+
+  The main search input in the menu bar.
+
+*/
+
+.device-desktop .phabricator-main-menu-search {
+  width: 220px;
+}
+
+.device .phabricator-main-menu-search {
+  height: 40px;
+}
+
+.phabricator-main-menu-search-container {
+  padding: 8px 0;
+  position: relative;
+  height: 24px;
+  margin: 0 8px;
+}
+
+.phabricator-main-menu-search-target {
+  position: absolute;
+  top: 42px;
+}
+
+.device-desktop .phabricator-main-menu-search-target {
+  width: 320px;
+  margin-left: -150px;
+}
+
+.device .phabricator-main-menu-search-target {
+  width: 100%;
+  margin-left: -25px;
+}
+
+.device .phabricator-main-menu-search-container {
+  padding: 4px 0;
+}
+
+.phabricator-main-menu .phabricator-main-menu-search input {
+  outline: 0;
+  margin: 0;
+  box-shadow: none;
+  transition: none;
+
+  color: {$bluetext};
+  width: 100%;
+  right: 0;
+  position: absolute;
+  font-size: {$normalfontsize};
+  border-width: 1px;
+  border-color: {$lightblueborder};
+  border-radius: 3px;
+  border-style: solid;
+  background-color: #fff;
+  height: 28px;
+  padding: 3px 30px 3px 6px;
+  float: left;
+  width: 205px;
+}
+
+.device .phabricator-main-menu-search input {
+  height: 32px;
+  font-size: {$biggestfontsize};
+  width: 100%;
+  padding-left: 50px;
+}
+
+.phabricator-main-menu .phabricator-main-menu-search input:focus {
+  background: #fff;
+  opacity: 1;
+  color: {$darkbluetext};
+  border-color: {$sky};
+  box-shadow: none;
+}
+
+.phabricator-main-menu-search input.jx-typeahead-placeholder {
+  color: {$bluetext};
+}
+
+.phabricator-main-menu-search button {
+  color: {$bluetext};
+  position: absolute;
+  background: {$greybackground};
+  border: none;
+  outline: none;
+  box-shadow: none;
+  text-shadow: none;
+  min-width: 0;
+  height: 24px;
+  width: 28px;
+  top: 10px;
+  right: -6px;
+  margin: 0 8px 0 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.phabricator-main-menu-search button.phabricator-main-menu-search-dropdown {
+  position: absolute;
+  right: auto;
+  left: -45px;
+  width: 40px;
+  background: transparent;
+}
+
+.device-desktop .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown {
+    height: 28px;
+    top: 8px;
+  }
+
+.device-desktop .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown:hover .phui-icon-view {
+    color: #fff;
+}
+
+.device .phabricator-main-menu-search
+  button.phabricator-main-menu-search-dropdown {
+    left: 2px;
+    background: {$greybackground};
+}
+
+button.phabricator-main-menu-search-dropdown .caret:before {
+  content: "\f107";
+  font-family: FontAwesome;
+  color: {$hoverwhite};
+}
+
+.phabricator-main-menu-search button.phabricator-main-menu-search-dropdown
+  .phui-icon-view {
+  color: {$hoverwhite};
+  font-size: 15px;
+  top: 6px;
+  left: 8px;
+}
+
+.device
+  .phabricator-main-menu-search button.phabricator-main-menu-search-dropdown
+  .phui-icon-view {
+  color: {$bluetext};
+}
+
+.device button.phabricator-main-menu-search-dropdown .caret:before {
+  color: {$bluetext};
+}
+
+.phabricator-main-menu-search-dropdown .caret {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  border: none;
+  margin-top: 1px;
+}
+
+.phabricator-main-menu-search button:hover {
+  color: {$sky};
+}
+
+.device .phabricator-main-menu-search button {
+  top: 6px;
+  border-radius: 0;
+  height: 28px;
+  right: -6px;
+}
+
+.phabricator-main-menu-search-target div.jx-typeahead-results {
+  background: #fff;
+  word-wrap: break-word;
+  overflow-y: auto;
+  box-shadow: {$dropshadow};
+  border: 1px solid {$blueborder};
+  border-radius: 3px;
+  margin-left: 40px;
+}
+
+.device .phabricator-main-menu-search-target div.jx-typeahead-results {
+  margin-left: 30px;
+}
+
+.phabricator-main-search-typeahead-result .phabricator-search-icon {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 24px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.phabricator-main-search-typeahead-result {
+  display: block;
+  padding: 6px 8px 8px 44px;
+  background-position: 8px;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.phabricator-main-search-typeahead-result .result-name {
+  display: block;
+  font-size: {$normalfontsize};
+  font-weight: bold;
+  color: {$darkgreytext};
+}
+
+.phabricator-main-search-typeahead-result .result-type {
+  color: {$lightgreytext};
+  font-size: {$smallestfontsize};
+  font-weight: normal;
+}
+
+.device .phabricator-application-menu-expanded.phabricator-search-menu-expanded
+ .phabricator-search-menu {
+  padding: 0;
+}
+
+.device-phone .phabricator-main-search-typeahead-result .result-name {
+  font-size: {$biggestfontsize};
+}
+
+.device-phone .phabricator-main-search-typeahead-result .result-type {
+  font-size: {$normalfontsize};
+}
+
+.device .phabricator-dark-menu .phui-list-item-type-link
+  .phabricator-main-search-typeahead-result {
+  line-height: 18px;
+}
+
+
+
+/* - Alert ---------------------------------------------------------------------
+
+  Alert menus are like icon menus but don't obey collapse rules.
+
+*/
+
+.phabricator-main-menu-alerts {
+  display: inline-block;
+  float: left;
+  padding: 4px 0;
+}
+
+.alert-notifications {
+  float: left;
+}
+
+.alert-notifications .phui-icon-view {
+  color: {$hoverwhite};
+}
+
+.device-desktop .alert-notifications:hover {
+  margin-top: -2px;
+  transition-duration: .2s;
+}
+
+.device-desktop .alert-notifications:hover .phui-icon-view {
+  color: #fff;
+}
+
+.phabricator-main-menu-alert-icon,
+.phabricator-main-menu-message-icon {
+  width: 18px;
+  height: 18px;
+  float: left;
+  padding: 8px 6px 8px 4px;
+  color: #fff;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: right;
+}
+
+.phui-icon-view.menu-icon-selected {
+  color: #fff;
+}
+
+.phabricator-main-menu-alert-icon {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.phabricator-main-menu-alert-count,
+.phabricator-main-menu-message-count {
+  color: #fff;
+  text-align: center;
+  display: none;
+  float: left;
+  margin: 11px 6px 0 -2px;
+  font-size: {$smallerfontsize};
+}
+
+.device-phone .alert-unread .phabricator-main-menu-alert-count,
+.device-phone .message-unread .phabricator-main-menu-message-count {
+  display: none;
+}
+
+.alert-unread .phabricator-main-menu-alert-icon,
+.message-unread .phabricator-main-menu-message-icon  {
+  color: #fff;
+}
+
+.alert-unread .phabricator-main-menu-alert-count,
+.message-unread .phabricator-main-menu-message-count  {
+  display: block;
+}
+
+/* - Dark Menu -----------------------------------------------------------------
+
+  Styles shared between the "core" menu (left button on mobile) and
+  "application" menu (right button on mobile). These styles give the menu a
+  white-on-black appearance.
+
+*/
+
+.device .phabricator-dark-menu,
+.device .phabricator-dark-menu a.phui-list-item-href {
+  color: {$darkbluetext};
+  -webkit-font-smoothing: antialiased;
+}
+
+.device .phabricator-dark-menu .phui-list-item-type-label {
+  text-transform: uppercase;
+  font-size: {$normalfontsize};
+  background-color: #fff;
+  padding: 6px 0 6px 12px;
+  display: block;
+  font-weight: bold;
+  color: #000;
+}
+
+.device .phabricator-dark-menu .phui-list-item-href {
+  background-color: #fff;
+  padding: 4px 0 4px 20px;
+  display: block;
+}
+
+
+/* - Core Menu -----------------------------------------------------------------
+
+  Styles unique to the core menu (left button on mobile).
+
+*/
+
+.phabricator-core-menu-profile-image {
+  background-size: 28px 28px;
+}
+
+.device .phabricator-search-menu {
+  display: none;
+}
+
+.device-desktop .phabricator-search-menu {
+  float: right;
+}
+
+.device .phabricator-search-menu-expanded .phabricator-search-menu {
+  display: block;
+  position: absolute;
+  top: 38px;
+  left: 8px;
+  right: 8px;
+  border: 1px solid {$lightblueborder};
+  border-radius: 3px;
+  box-shadow: {$dropshadow};
+}
+
+.device .phabricator-dark-menu .phui-list-item-type-link {
+  min-height: 24px;
+  line-height: 20px;
+  background: #fff;
+}
+
+.device-desktop .phabricator-application-menu {
+  float: right;
+}
+
+.device-desktop .phabricator-application-menu .phui-list-item-view,
+.device-desktop .phabricator-application-menu .phui-list-item-name  {
+  display: none;
+}
+
+.phabricator-application-menu .phui-list-item-href {
+  display: block;
+}
+
+.phabricator-application-menu .phui-list-item-icon.phui-font-fa {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  color: {$hoverwhite};
+  margin: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.device .phabricator-dark-menu.phabricator-application-menu
+  .phui-list-item-icon.phui-font-fa,
+.device .phabricator-dark-menu .phabricator-core-menu-icon {
+  display: none;
+}
+
+.device .phabricator-application-menu .phui-list-item-icon.phui-font-fa {
+  margin: 4px 12px 4px 0;
+}
+
+.phabricator-application-menu .phui-list-item-icon.fa-plus {
+  line-height: 22px;
+}
+
+.device-desktop .phabricator-application-menu
+  .core-menu-item.phui-list-item-view:hover
+  .phui-list-item-icon.phui-font-fa {
+    color: #fff;
+  }
+
+.device-desktop .phabricator-application-menu
+  .phui-list-item-view.core-menu-item {
+  display: block;
+}
+
+.device-desktop .phabricator-application-menu .phui-list-item-view {
+  float: left;
+  position: relative;
+  min-width: 36px;
+  height: 36px;
+  margin-top: 4px;
+}
+
+.device-desktop .phabricator-core-menu-icon {
+  top: 4px;
+  left: 4px;
+}
+
+.device .phabricator-core-menu-icon {
+  left: 16px;
+  height: 24px;
+  width: 24px;
+  background-size: 24px;
+  margin: 2px;
+}
+
+.phabricator-core-menu-icon {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.phabricator-main-menu-dropdown {
+  position: absolute;
+  background: #fff;
+  top: 42px;
+  padding: 2px;
+  box-shadow: {$dropshadow};
+  border: 1px solid {$blueborder};
+  border-radius: 3px;
+}
+
+
+/* - Application Menu ----------------------------------------------------------
+
+  Styles unique to the application menu (right button on mobile).
+
+*/
+
+.device .phabricator-application-menu-expanded .phabricator-application-menu {
+  display: block;
+  position: absolute;
+  border: 1px solid {$blueborder};
+  border-radius: 3px;
+  box-shadow: {$dropshadow};
+  top: 42px;
+  right: 8px;
+  width: 240px;
+}
+
+.device .phabricator-application-menu,
+.device-desktop .phabricator-dark-menu .phui-list-item-type-label {
+  display: none;
+}
+
+
+/* - Print ---------------------------------------------------------------------
+*/
+
+!print .phabricator-main-menu {
+  display: none;
+}
