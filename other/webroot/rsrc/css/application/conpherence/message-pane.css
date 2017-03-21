@@ -1,0 +1,350 @@
+/**
+ * @provides conpherence-message-pane-css
+ */
+
+.conpherence-message-pane,
+.loading .messages-loading-mask,
+.loading .messages-loading-icon,
+.conpherence-layout .conpherence-no-threads {
+  position: fixed;
+  left: 241px;
+  right: 241px;
+  top: 76px;
+  bottom: 0px;
+  min-width: 300px;
+  width: auto;
+}
+
+.device .conpherence-message-pane,
+.device .loading .messages-loading-mask,
+.device .loading .messages-loading-icon,
+.device .conpherence-layout .conpherence-no-threads {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.conpherence-layout .conpherence-no-threads {
+  text-align: center;
+}
+
+.conpherence-layout .conpherence-no-threads .text {
+  margin: 16px 0px 16px 0px;
+}
+
+.conpherence-layout .phui-crumbs-view {
+  padding: 0 0 0 8px;
+  background: #f7f7f7;
+}
+
+.conpherence-show-more-messages {
+  display: block;
+  background: #e0e3ec;
+  margin: 10px;
+  text-align: center;
+  padding: 10px;
+  color: {$bluetext};
+}
+
+.conpherence-show-more-messages-loading {
+  font-style: italic;
+}
+
+.conpherence-message-pane .conpherence-messages {
+  position: fixed;
+  left: 241px;
+  right: 241px;
+  top: 76px;
+  bottom: 172px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-has-warning .conpherence-message-pane .conpherence-messages {
+  top: 110px;
+}
+
+.conpherence-messages.jx-scrollbar-frame {
+  overflow-y: hidden;
+}
+
+.conpherence-messages .jx-scrollbar-content > .conpherence-edited:first-child,
+.conpherence-messages > .conpherence-edited:first-child {
+  padding-top: 20px;
+}
+
+.conpherence-messages > .jx-scrollbar-content .conpherence-edited:last-child,
+.conpherence-messages > .conpherence-edited:last-child {
+  padding-bottom: 20px;
+}
+
+.conpherence-message-pane .conpherence-edited + .date-marker  {
+  margin-top: 24px;
+}
+
+.device .conpherence-message-pane .conpherence-messages {
+  left: 0;
+  right: 0;
+  bottom: 52px;
+  width: 100%;
+  box-shadow: none;
+}
+
+.conpherence-message-pane .messages-loading-mask {
+  opacity: .6;
+  background: #fff;
+  display: none;
+}
+
+.loading .messages-loading-mask {
+  display: block;
+}
+
+.conpherence-message-pane .phui-form-view {
+  border-width: 0;
+  background-color: {$lightgreybackground};
+  height: 156px;
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid {$thinblueborder};
+  left: 241px;
+  right: 241px;
+}
+
+.conpherence-message-pane .phui-form-view.login-to-participate {
+  height: 28px;
+}
+
+.conpherence-message-pane .login-to-participate a.button {
+  float: right;
+}
+
+.conpherence-message-pane .aphront-form-control-submit button,
+.conpherence-message-pane .aphront-form-control-submit a.button {
+  margin-top: 6px;
+}
+
+/**
+ * When entering "Fullscreen Mode" in the remarkup control, we need to drop
+ * all of the "position: fixed" on parent elements or Chrome doesn't put the
+ * textarea on top.
+ */
+.remarkup-fullscreen-mode .conpherence-message-pane,
+.remarkup-fullscreen-mode .conpherence-message-pane .conpherence-messages,
+.remarkup-fullscreen-mode .conpherence-message-pane .phui-form-view,
+.remarkup-fullscreen-mode .conpherence-layout {
+  position: static;
+}
+
+.conpherence-message-pane .remarkup-assist-bar {
+  border-color: {$lightblueborder};
+}
+
+.device .conpherence-message-pane .remarkup-assist-bar {
+  display: none;
+}
+
+.device .conpherence-message-pane .phui-form-view {
+  left: 0;
+  right: 0;
+  height: 34px;
+  width: auto;
+}
+
+.conpherence-layout .conpherence-message-pane .phui-form-view
+  div.aphront-form-input {
+  margin: 0;
+  width: 100%;
+}
+
+.conpherence-message-pane .conpherence-transaction-view {
+  padding: 2px 0px;
+  margin: 4px 12px;
+  background-size: 100%;
+  min-height: auto;
+}
+
+.device-phone .conpherence-message-pane .conpherence-transaction-view {
+  margin: 0 8px;
+}
+
+.conpherence-message-pane .conpherence-transaction-image {
+  float: left;
+  border-radius: 3px;
+  height: 35px;
+  width: 35px;
+  background-size: 35px;
+  position: absolute;
+  top: 5px;
+  box-shadow: {$borderinset};
+}
+
+.device-phone .conpherence-message-pane .conpherence-transaction-image {
+  display: none;
+}
+
+.conpherence-message-pane .conpherence-comment.anchor-target,
+.conpherence-message-pane .conpherence-edited.anchor-target {
+  background: {$lightyellow};
+}
+
+.conpherence-message-pane .conpherence-comment.anchor-target {
+  margin: 4px 8px 4px 8px;
+  padding: 2px 4px 2px 4px;
+}
+
+.conpherence-message-pane .conpherence-edited.anchor-target {
+  margin: 0px 8px 0px 8px;
+  padding: 0px 4px 0px 4px;
+}
+
+.conpherence-message-pane .conpherence-transaction-detail {
+  border-width: 0;
+  margin-left: 45px;
+}
+
+.device-phone .conpherence-message-pane .conpherence-transaction-detail {
+  margin: 0;
+}
+
+.conpherence-message-pane .conpherence-transaction-view.date-marker {
+  padding: 0;
+  margin: 20px 12px 4px;
+  min-height: auto;
+}
+
+.device-phone .conpherence-message-pane
+.conpherence-transaction-view.date-marker {
+  margin: 12px 0 4px;
+}
+
+.device-tablet .conpherence-message-pane
+  .conpherence-transaction-view.date-marker {
+    padding-left: 37px;
+}
+
+.conpherence-message-pane .conpherence-transaction-view.date-marker
+  .date {
+    left: 40px;
+    font-size: {$normalfontsize};
+    padding: 0px 4px;
+}
+
+.device .conpherence-message-pane .conpherence-transaction-view.date-marker
+  .date {
+    color: {$lightbluetext};
+    left: 4px;
+}
+
+.device-phone .conpherence-message-pane .conpherence-edited {
+  min-height: none;
+  color: {$lightgreytext};
+  margin: 0 8px;
+}
+
+.conpherence-message-pane .conpherence-edited .conpherence-transaction-content {
+  color: {$lightgreytext};
+  font-size: {$normalfontsize};
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+
+.conpherence-message-pane .conpherence-edited {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  min-height: inherit;
+}
+
+.conpherence-message-pane .conpherence-edited + .conpherence-comment {
+  margin-top: 16px;
+}
+
+.conpherence-transaction-view.conpherence-edited +
+  .conpherence-transaction-view.date-marker {
+    margin-top: 24px;
+}
+
+.conpherence-message-pane .conpherence-edited .conpherence-transaction-header {
+  float: right;
+}
+
+.conpherence-message-pane .conpherence-edited
+  .conpherence-transaction-content a {
+  color: {$darkbluetext};
+}
+
+.device-phone .conpherence-message-pane .conpherence-transaction-info {
+  display: none;
+}
+
+.conpherence-message-pane .conpherence-transaction-info,
+.conpherence-message-pane .anchor-link,
+.conpherence-message-pane .phabricator-content-source-view {
+  color: {$lightgreytext};
+  line-height: 16px;
+  font-size: {$smallerfontsize};
+}
+
+.conpherence-message-pane .conpherence-transaction-info {
+  float: right;
+}
+
+.conpherence-message-pane .conpherence-transaction-header,
+.conpherence-message-pane .conpherence-transaction-info,
+.conpherence-message-pane .anchor-link,
+.conpherence-message-pane .conpherence-transaction-content {
+  background: none;
+  padding: 0;
+}
+
+.conpherence-message-pane .conpherence-transaction-content {
+  padding: 2px 0 8px 0;
+}
+
+.conpherence-message-pane .aphront-form-control {
+  padding: 0;
+}
+
+.conpherence-message-pane .remarkup-assist-textarea {
+  height: 100px;
+  padding: 6px;
+  border-color: {$lightblueborder};
+  border-top-color: {$thinblueborder};
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  resize: none;
+}
+
+.device .conpherence-message-pane .remarkup-assist-textarea {
+  margin: 0;
+  padding: 8px 68px 8px 8px;
+  width: 100%;
+  height: 34px;
+  resize: none;
+}
+
+.conpherence-message-pane .remarkup-assist-textarea:focus {
+  outline: none;
+}
+
+.device .conpherence-message-pane .aphront-form-control-submit {
+  padding: 0;
+  position: absolute;
+  top: 7px;
+  right: 13px;
+}
+
+.device .conpherence-message-pane .aphront-form-control-textarea {
+  float: left;
+  height: 24px;
+  width: 100%;
+}
+
+.conpherence-message .phabricator-remarkup .remarkup-code-block pre {
+  max-height: 200px;
+}

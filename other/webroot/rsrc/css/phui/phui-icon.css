@@ -1,0 +1,40 @@
+/**
+ * @provides phui-icon-view-css
+ */
+
+.phui-icon-example .phui-icon-view {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.phui-icon-view.sprite-tokens {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.phui-icon-view.sprite-login {
+  height: 28px;
+  width: 28px;
+}
+
+.phui-icon-view.phuihead-medium {
+  height: 50px;
+  width: 50px;
+}
+
+.phui-icon-view.phuihead-small {
+  height: 35px;
+  width: 35px;
+  background-size: 35px;
+}
+
+.phui-icon-has-text:before {
+  margin-right: 4px;
+}
+
+a.phui-icon-view:hover {
+  text-decoration: none;
+  color: {$sky};
+}

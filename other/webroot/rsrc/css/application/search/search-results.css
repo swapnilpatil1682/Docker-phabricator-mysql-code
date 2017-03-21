@@ -1,0 +1,18 @@
+/**
+ * @provides phabricator-search-results-css
+ */
+
+.phui-object-item-link strong {
+  color: {$fire};
+  text-decoration: underline;
+}
+
+.phui-source-fragment {
+  color: {$darkgreytext};
+}
+
+.phui-source-fragment strong {
+  background-color: {$lightyellow};
+  font-weight: normal;
+  color: #000;
+}

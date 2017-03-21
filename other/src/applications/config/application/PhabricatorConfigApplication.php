@@ -1,0 +1,66 @@
+<?php
+
+final class PhabricatorConfigApplication extends PhabricatorApplication {
+
+  public function getBaseURI() {
+    return '/config/';
+  }
+
+  public function getFontIcon() {
+    return 'fa-sliders';
+  }
+
+  public function isPinnedByDefault(PhabricatorUser $viewer) {
+    return $viewer->getIsAdmin();
+  }
+
+  public function getTitleGlyph() {
+    return "\xE2\x98\xBA";
+  }
+
+  public function getApplicationGroup() {
+    return self::GROUP_ADMIN;
+  }
+
+  public function canUninstall() {
+    return false;
+  }
+
+  public function getName() {
+    return 'Config';
+  }
+
+  public function getShortDescription() {
+    return pht('Configure Phabricator');
+  }
+
+  public function getRoutes() {
+    return array(
+      '/config/' => array(
+        '' => 'PhabricatorConfigListController',
+        'all/' => 'PhabricatorConfigAllController',
+        'history/' => 'PhabricatorConfigHistoryController',
+        'edit/(?P<key>[\w\.\-]+)/' => 'PhabricatorConfigEditController',
+        'group/(?P<key>[^/]+)/' => 'PhabricatorConfigGroupController',
+        'welcome/' => 'PhabricatorConfigWelcomeController',
+        'database/'.
+          '(?:(?P<database>[^/]+)/'.
+          '(?:(?P<table>[^/]+)/'.
+          '(?:(?:col/(?P<column>[^/]+)|key/(?P<key>[^/]+))/)?)?)?'
+          => 'PhabricatorConfigDatabaseStatusController',
+        'dbissue/' => 'PhabricatorConfigDatabaseIssueController',
+        '(?P<verb>ignore|unignore)/(?P<key>[^/]+)/'
+          => 'PhabricatorConfigIgnoreController',
+        'issue/' => array(
+          '' => 'PhabricatorConfigIssueListController',
+          '(?P<key>[^/]+)/' => 'PhabricatorConfigIssueViewController',
+        ),
+        'cache/' => 'PhabricatorConfigCacheController',
+        'module/' => array(
+          '(?P<module>[^/]+)/' => 'PhabricatorConfigModuleController',
+        ),
+      ),
+    );
+  }
+
+}
