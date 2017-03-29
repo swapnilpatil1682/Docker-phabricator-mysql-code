@@ -65,6 +65,13 @@ RUN     ln -s /usr/lib/git-core/git-http-backend /opt/phabricator/support/bin
 RUN     /opt/phabricator/bin/config set phd.user "root"
 RUN     echo "www-data ALL=(ALL) SETENV: NOPASSWD: /opt/phabricator/support/bin/git-http-backend" >> /etc/sudoers
 
+#ADD     default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+ADD     server.crt /tmp/
+ADD     server.key /tmp/
+RUN     a2ensite default-ssl 
+RUN     a2enmod ssl 
+RUN     service apache2 restart
+
 EXPOSE  80
 ADD     entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
