@@ -3,7 +3,7 @@
 #
 
 FROM    debian:jessie
-MAINTAINER  Yvonnick Esnault <yvonnick@esnau.lt>
+MAINTAINER  Swapnil Patil <Swapnil.patil@exadatum.com>
 
 ENV DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true
 
