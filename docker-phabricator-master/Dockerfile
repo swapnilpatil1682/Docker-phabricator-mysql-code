@@ -36,17 +36,12 @@ RUN     apt-get clean && apt-get update && apt-get install -y \
 # repeatable builds use the latest SHA
 ADD     download.sh /opt/download.sh
 
-
-ARG ARCANIST_COMMIT=c304c4e045
-ARG LIBPHUTIL_COMMIT=55f554b618
-
 WORKDIR /opt
 
-RUN     bash download.sh arcanist    $ARCANIST_COMMIT
-RUN     bash download.sh libphutil   $LIBPHUTIL_COMMIT
-RUN     rm -rf /opt/phabricator
-RUN     rm -rf phabricator
-RUN    git clone https://swapnilpatil1682:amleavingindia1818@bitbucket.org/swapnilpatil1682/phabricator.git
+RUN    git clone https://github.com/phacility/libphutil.git						
+RUN    git clone https://github.com/phacility/arcanist.git
+RUN    git clone https://github.com/phacility/phabricator.git
+
 # Setup apache
 RUN     a2enmod rewrite
 ADD     phabricator.conf /etc/apache2/sites-available/phabricator.conf
@@ -65,12 +60,30 @@ RUN     ln -s /usr/lib/git-core/git-http-backend /opt/phabricator/support/bin
 RUN     /opt/phabricator/bin/config set phd.user "root"
 RUN     echo "www-data ALL=(ALL) SETENV: NOPASSWD: /opt/phabricator/support/bin/git-http-backend" >> /etc/sudoers
 
-#ADD     default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+ADD     default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 ADD     server.crt /tmp/
 ADD     server.key /tmp/
 RUN     a2ensite default-ssl 
 RUN     a2enmod ssl 
 RUN     service apache2 restart
+
+RUN 	apt-get update
+RUN	yes  | apt-get install curl python-software-properties
+RUN	curl -sL https://deb.nodesource.com/setup_7.x | sudo bash -
+RUN 	apt-get install nodejs
+RUN	npm install ws
+RUN	sudo adduser test
+#RUN 	chmod go+w /var/tmp/aphlict/
+RUN 	whoami
+USER 	test
+RUN 	whoami
+RUN	phabricator/bin/aphlict start
+RUN	apt-get update
+USER 	root
+RUN 	export PATH="$PATH:/opt/arcanist/bin"
+RUN	sudo apt-get install nano 
+#RUN 	yes | sudo apt-get install postfix
+
 
 EXPOSE  80
 ADD     entrypoint.sh /entrypoint.sh
